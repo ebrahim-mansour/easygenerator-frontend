@@ -1,12 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { signupSchema, type SignupFormData } from '../utils/validation';
 import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
 
 export const SignUp = () => {
-  const navigate = useNavigate();
   const { signup } = useAuth();
   const [error, setError] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);

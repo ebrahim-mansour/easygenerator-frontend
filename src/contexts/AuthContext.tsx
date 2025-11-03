@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await authService.signup(email, name, password);
     const userData = await authService.getProfile();
     setUser(userData);
+    setLoading(false);
     navigate('/app');
   };
 
@@ -50,6 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await authService.signin(email, password);
     const userData = await authService.getProfile();
     setUser(userData);
+    setLoading(false);
     navigate('/app');
   };
 

@@ -26,6 +26,7 @@ export const SignIn = () => {
       await signin(data.email, data.password);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Invalid credentials. Please try again.');
+    } finally {
       setIsSubmitting(false);
     }
   };

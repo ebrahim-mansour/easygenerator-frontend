@@ -31,7 +31,7 @@ apiClient.interceptors.response.use(
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
 
     // Skip token refresh for signin/signup endpoints - to handle 401 errors normally
-    const isAuthEndpoint = originalRequest.url?.includes('/auth/signin') || originalRequest.url?.includes('/auth/signup');
+    const isAuthEndpoint = originalRequest.url?.includes('/auth/profile') || originalRequest.url?.includes('/auth/signin') || originalRequest.url?.includes('/auth/signup');
 
     if (error.response?.status === 401 && !originalRequest._retry && !isAuthEndpoint) {
       if (isRefreshing) {

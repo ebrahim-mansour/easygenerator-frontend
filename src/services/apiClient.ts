@@ -7,8 +7,6 @@ const API_URL = isProduction
   ? '' // Empty string means relative URLs - nginx will proxy /auth requests
   : (import.meta.env.VITE_API_URL || 'http://localhost:8080');
 
-console.log("🚀 ~ API_URL:", API_URL)
-
 const apiClient = axios.create({
   baseURL: API_URL,
   withCredentials: true,

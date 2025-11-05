@@ -59,7 +59,7 @@ jobs:
                         echo "")
           if [ -z "$BACKEND_URL" ]; then
             echo "Warning: Could not get backend URL. Using default from Dockerfile."
-            BACKEND_URL="https://auth-backend-220638362045.us-central1.run.app"
+            BACKEND_URL="https://auth-backend-7v5surudzq-uc.a.run.app"
           fi
           echo "BACKEND_URL=$BACKEND_URL" >> $GITHUB_ENV
           echo "Backend URL: $BACKEND_URL"

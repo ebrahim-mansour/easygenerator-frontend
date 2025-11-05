@@ -22,5 +22,5 @@ ENV BACKEND_URL=https://auth-backend-220638362045.us-central1.run.app
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "envsubst '$$PORT $$BACKEND_URL' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "envsubst 'PORT BACKEND_URL' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
 

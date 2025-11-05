@@ -57,6 +57,4 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --port 5173 \
             --set-env-vars "VITE_API_URL=${{ secrets.BACKEND_URL }}"
-

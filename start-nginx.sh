@@ -23,12 +23,22 @@ fi
 # Export for envsubst
 export BACKEND_URL
 
+# Extract backend hostname (without protocol) for Host header
+BACKEND_HOST=$(echo "$BACKEND_URL" | sed -E 's|^https?://||' | sed 's|/.*$||')
+export BACKEND_HOST
+
 # Set default PORT if not provided
 PORT="${PORT:-8080}"
 export PORT
 
+# Log configuration for debugging
+echo "Nginx Configuration:"
+echo "  PORT: $PORT"
+echo "  BACKEND_URL: $BACKEND_URL"
+echo "  BACKEND_HOST: $BACKEND_HOST"
+
 # Generate nginx config from template
-envsubst '$PORT $BACKEND_URL' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf
+envsubst '$PORT $BACKEND_URL $BACKEND_HOST' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf
 
 # Validate generated config
 if ! nginx -t; then

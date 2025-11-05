@@ -15,12 +15,16 @@ RUN apk add --no-cache gettext
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/templates/default.conf.template
+COPY start-nginx.sh /start-nginx.sh
 
 # Default PORT for Cloud Run (will be overridden by Cloud Run)
 ENV PORT=8080
 ENV BACKEND_URL=https://auth-backend-7v5surudzq-uc.a.run.app
 
+# Make startup script executable
+RUN chmod +x /start-nginx.sh
+
 EXPOSE 8080
 
-CMD ["sh", "-c", "BACKEND_URL=$(echo \"$$BACKEND_URL\" | sed 's|/*$$||'); export BACKEND_URL; envsubst '$$PORT $$BACKEND_URL' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
+CMD ["/start-nginx.sh"]
 

@@ -26,7 +26,7 @@ npm install
 Create a `.env` file:
 
 ```bash
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:8080
 ```
 
 ## Running the app

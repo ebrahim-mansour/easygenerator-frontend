@@ -57,4 +57,4 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars "VITE_API_URL=${{ secrets.BACKEND_URL }}"
+            --set-env-vars "BACKEND_URL=${{ secrets.BACKEND_URL }}"
